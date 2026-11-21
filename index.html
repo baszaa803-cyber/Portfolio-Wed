@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="day">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="นพรุจ วันใจ (Nopparut Wanjai) — Portfolio ด้าน IT Support, Hardware, Network & Software Developer พร้อมพื้นหลังทะเล Pixel แนว Stardew Valley">
+    <title>นพรุจ วันใจ (Nopparut Wanjai) — Portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Full-Viewport Three.js Stardew Valley Pixel Ocean Canvas -->
+    <canvas id="webgl-canvas" aria-hidden="true"></canvas>
+
+    <!-- Portfolio UI Container -->
+    <div id="app" class="app-root">
+        <!-- Top Pixel-Glass Navbar -->
+        <header class="navbar" id="navbar" data-ui-interactive>
+            <div class="nav-inner">
+                <a href="#profile" class="brand" aria-label="Home">
+                    <span class="brand-pixel-dot" aria-hidden="true"></span>
+                    <span class="brand-text" id="brand-name">BAS.PORTFOLIO</span>
+                </a>
+
+                <nav class="nav-links" id="nav-links" aria-label="Primary Navigation">
+                    <a href="#profile" class="nav-link active" data-section="profile" data-i18n="nav.profile">โปรไฟล์</a>
+                    <a href="#about-skills" class="nav-link" data-section="about-skills" data-i18n="nav.aboutSkills">เกี่ยวกับ &amp; ทักษะ</a>
+                    <a href="#experience" class="nav-link" data-section="experience" data-i18n="nav.experience">ประวัติการทำงาน</a>
+                    <a href="#education" class="nav-link" data-section="education" data-i18n="nav.education">การศึกษา</a>
+                    <a href="#contact" class="nav-link" data-section="contact" data-i18n="nav.contact">ติดต่อ</a>
+                </nav>
+
+                <div class="nav-actions">
+                    <button type="button" class="pill-btn" id="btn-time" title="เปลี่ยนเวลาทะเล 3D (เช้า / เย็น / กลางคืน)">
+                        <span id="time-icon" aria-hidden="true">☀️</span>
+                        <span id="time-label">กลางวัน</span>
+                    </button>
+                    <button type="button" class="pill-btn pill-btn-mono" id="btn-lang" title="Switch Language (TH / EN)">
+                        EN
+                    </button>
+                    <button type="button" class="pill-btn pill-btn-accent" id="btn-view-beach">
+                        <span aria-hidden="true">&#127754;</span>
+                        <span id="view-beach-label" data-i18n="controls.viewBeach">ชมวิวทะเล 3D</span>
+                    </button>
+                    <button type="button" class="mobile-menu-btn" id="btn-mobile-menu" aria-label="Toggle Menu" aria-expanded="false">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Scrollable Portfolio Content -->
+        <main class="portfolio-main" id="portfolio-main">
+            <!-- SECTION 1: HERO & PERSONAL PROFILE -->
+            <section id="profile" class="section hero-section">
+                <div class="container">
+                    <div class="glass-card hero-profile-card reveal visible" data-ui-interactive>
+                        <div class="hero-layout">
+                            <div class="avatar-column">
+                                <div class="pixel-portrait-frame">
+                                    <img
+                                        id="profile-avatar"
+                                        src="assets/profile.jpg"
+                                        alt="นพรุจ วันใจ (Nopparut Wanjai)"
+                                        class="portrait-img"
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="hero-info-column">
+                                <div class="role-badge">
+                                    <span class="status-dot" aria-hidden="true"></span>
+                                    <span id="hero-role-badge" data-i18n="hero.badge">IT Support • Hardware • Software Developer</span>
+                                </div>
+
+                                <h1 class="hero-name-th" id="profile-name-th">นพรุจ วันใจ</h1>
+                                <p class="hero-name-en" id="profile-name-en">Nopparut Wanjai</p>
+
+                                <div class="personal-box">
+                                    <h2 class="personal-heading" data-i18n="hero.personalTitle">ประวัติส่วนตัว</h2>
+                                    <div class="personal-grid">
+                                        <div class="personal-chip">
+                                            <span class="chip-label" data-i18n="hero.nicknameLabel">ชื่อเล่น</span>
+                                            <strong class="chip-val" id="val-nickname">บาส</strong>
+                                        </div>
+                                        <div class="personal-chip">
+                                            <span class="chip-label" data-i18n="hero.ageLabel">อายุ</span>
+                                            <strong class="chip-val" id="val-age">24 ปี</strong>
+                                        </div>
+                                        <div class="personal-chip">
+                                            <span class="chip-label" data-i18n="hero.birthLabel">วันเกิด</span>
+                                            <strong class="chip-val" id="val-birth">07/04/2545</strong>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p class="hero-summary" id="hero-about-summary"></p>
+
+                                <div class="hero-cta">
+                                    <a href="#experience" class="btn btn-primary" data-i18n="hero.ctaExperience">ดูประวัติการทำงาน</a>
+                                    <a href="#contact" class="btn btn-ghost" data-i18n="hero.ctaContact">ข้อมูลติดต่อ</a>
+                                </div>
+
+                                <p class="ocean-hint">
+                                    <span class="hint-star" aria-hidden="true">&#10022;</span>
+                                    <span data-i18n="hero.oceanHint">ลากพื้นหลังเพื่อหมุนมุมมองทะเล 3D • ดับเบิลคลิกที่ฉากเพื่อเปลี่ยนเวลา เช้า/เย็น/กลางคืน</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2: ABOUT ME & ADDITIONAL SKILLS -->
+            <section id="about-skills" class="section">
+                <div class="container">
+                    <div class="section-header reveal">
+                        <span class="eyebrow" data-i18n="aboutSection.eyebrow">01 / ABOUT ME &amp; SKILLS</span>
+                        <h2 class="section-title" data-i18n="aboutSection.title">เกี่ยวกับฉัน &amp; ทักษะเพิ่มเติม</h2>
+                    </div>
+
+                    <div class="about-skills-grid">
+                        <article class="glass-card about-card reveal" data-ui-interactive>
+                            <h3 class="card-title" data-i18n="aboutSection.aboutTitle">เกี่ยวกับฉัน</h3>
+                            <p class="about-body" id="about-full-text"></p>
+
+                            <div class="focus-pills">
+                                <span class="pixel-tag">IT Support</span>
+                                <span class="pixel-tag">Server &amp; Network</span>
+                                <span class="pixel-tag">Hardware Repair</span>
+                                <span class="pixel-tag">Software Developer</span>
+                                <span class="pixel-tag">Programming &amp; AI</span>
+                            </div>
+                        </article>
+
+                        <article class="glass-card skills-card reveal" data-ui-interactive>
+                            <h3 class="card-title" data-i18n="aboutSection.skillsTitle">ทักษะเพิ่มเติม</h3>
+                            <div class="skills-list" id="skills-list">
+                                <!-- Rendered dynamically from PORTFOLIO_DATA.skillsList -->
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: WORK EXPERIENCE -->
+            <section id="experience" class="section">
+                <div class="container">
+                    <div class="section-header reveal">
+                        <span class="eyebrow" data-i18n="experienceSection.eyebrow">02 / WORK EXPERIENCE</span>
+                        <h2 class="section-title" data-i18n="experienceSection.title">ประวัติการทำงาน</h2>
+                        <p class="section-subtitle" data-i18n="experienceSection.subtitle">
+                            ประสบการณ์จริงทั้งด้าน IT Support, งานระบบเครือข่าย, งานขายสินค้าไอที และการประสานงาน
+                        </p>
+                    </div>
+
+                    <div class="experience-timeline" id="experience-list">
+                        <!-- Rendered dynamically from PORTFOLIO_DATA.experience -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4: EDUCATION -->
+            <section id="education" class="section">
+                <div class="container">
+                    <div class="section-header reveal">
+                        <span class="eyebrow" data-i18n="educationSection.eyebrow">03 / EDUCATION</span>
+                        <h2 class="section-title" data-i18n="educationSection.title">การศึกษา</h2>
+                    </div>
+
+                    <div id="education-card-wrap" class="reveal">
+                        <!-- Rendered dynamically from PORTFOLIO_DATA.education -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 5: CONTACT -->
+            <section id="contact" class="section">
+                <div class="container">
+                    <div class="section-header centered reveal">
+                        <span class="eyebrow" data-i18n="contactSection.eyebrow">04 / CONTACT</span>
+                        <h2 class="section-title" data-i18n="contactSection.title">ติดต่อ</h2>
+                        <p class="section-subtitle" data-i18n="contactSection.subtitle">
+                            พร้อมพูดคุยเรื่องงานด้าน IT Support, ซ่อมบำรุงคอมพิวเตอร์, ระบบเครือข่าย และการพัฒนาซอฟต์แวร์
+                        </p>
+                    </div>
+
+                    <div class="contact-cards-grid" id="contact-grid">
+                        <!-- Rendered dynamically from PORTFOLIO_DATA.profile -->
+                    </div>
+                </div>
+            </section>
+
+            <footer class="footer">
+                <div class="container footer-inner">
+                    <span id="footer-note" data-i18n="footer.note">
+                        นพรุจ วันใจ (Nopparut Wanjai) • สร้างด้วย HTML5, CSS3, Three.js Pixel Ocean &amp; Vanilla JavaScript
+                    </span>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast" role="alert" aria-live="assertive"></div>
+
+    <!-- Three.js r128 & Portfolio Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/scene3d.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
